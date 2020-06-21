@@ -1,11 +1,9 @@
 package cn.edu.lsu.demo.controller;
 
 import cn.edu.lsu.demo.model.dto.RegisterDTO;
-import cn.edu.lsu.demo.model.vo.Response;
-import cn.edu.lsu.demo.model.vo.Status;
+import cn.edu.lsu.demo.model.vo.status.Response;
 import cn.edu.lsu.demo.model.vo.UserVO;
-import cn.edu.lsu.demo.model.vo.status.Ok;
-import cn.edu.lsu.demo.model.vo.status.UsernameIsExist;
+import cn.edu.lsu.demo.model.vo.status.impl.UsernameIsExist;
 import cn.edu.lsu.demo.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;

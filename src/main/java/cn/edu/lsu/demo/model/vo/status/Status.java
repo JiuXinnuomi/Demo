@@ -1,4 +1,4 @@
-package cn.edu.lsu.demo.model.vo;
+package cn.edu.lsu.demo.model.vo.status;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

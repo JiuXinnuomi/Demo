@@ -1,6 +1,6 @@
-package cn.edu.lsu.demo.model.vo;
+package cn.edu.lsu.demo.model.vo.status;
 
-import cn.edu.lsu.demo.model.vo.status.Ok;
+import cn.edu.lsu.demo.model.vo.status.impl.Ok;
 import cn.edu.lsu.demo.utils.ReflectsUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +23,7 @@ public class Response<T> {
 
     public static <T>Response<T> pack(Class<? extends Status> clazz) {
         return pack(clazz, null);
-}
+    }
 
     public static <T>Response<T> pack(Class<? extends Status> clazz, T data) {
         Status status = ReflectsUtils.newInstance(clazz);
