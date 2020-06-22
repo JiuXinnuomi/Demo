@@ -48,13 +48,33 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+
+
         <dependency>
             <groupId>cn.graydove</groupId>
             <artifactId>jwt-spring-boot-starter</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/lib/security-1.0.0.jar</systemPath>
+            <systemPath>${basedir}/src/lib/jwt-spring-boot-starter-1.0.0.jar</systemPath>
         </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.8.3</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
