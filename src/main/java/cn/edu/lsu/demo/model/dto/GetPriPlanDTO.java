@@ -9,6 +9,6 @@ import javax.validation.constraints.NotBlank;
 public class GetPriPlanDTO {
 
 
-    private Number userId;
+    private Integer userId;
 
 }
