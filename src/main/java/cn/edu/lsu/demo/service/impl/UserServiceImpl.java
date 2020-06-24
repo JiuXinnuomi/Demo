@@ -6,6 +6,7 @@ import cn.edu.lsu.demo.model.entity.User;
 import cn.edu.lsu.demo.model.vo.UserVO;
 import cn.edu.lsu.demo.repository.UserRepository;
 import cn.edu.lsu.demo.service.UserService;
+import cn.graydove.security.crypto.PasswordEncoder;
 import cn.graydove.security.exception.UsernameNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,11 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    private PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -24,9 +28,12 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setUsername(registerDTO.getUsername());
         user.setNickname(registerDTO.getNickname());
-        user.setPassword(registerDTO.getPassword());
 
-        user = userRepository.save(user);
+        user.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
+
+
+
+        user= userRepository.save(user);
 
         UserVO userVO = new UserVO();
         BeanUtils.copyProperties(user, userVO);

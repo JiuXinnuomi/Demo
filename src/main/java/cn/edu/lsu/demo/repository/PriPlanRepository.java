@@ -5,12 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PriPlanRepository extends JpaRepository<PriPlan, Integer>  {
+public interface PriPlanRepository extends JpaRepository<PriPlan,Integer>  {
 
-    List <PriPlan> findAllByUserId(Integer userId);
-
-    PriPlan findPriPlanById(Integer id);
-
-    PriPlan deleteByid(Integer id);
+    List <PriPlan> findByUserId(Integer userId);
 
 }

@@ -9,5 +9,6 @@ import javax.validation.constraints.NotBlank;
 public class GetFocusedDTO {
 
 
-    private Number userId;
+    private Integer userId;
+
 }

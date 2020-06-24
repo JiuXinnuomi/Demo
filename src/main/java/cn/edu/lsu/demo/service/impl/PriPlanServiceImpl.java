@@ -4,14 +4,12 @@ package cn.edu.lsu.demo.service.impl;
 import cn.edu.lsu.demo.model.dto.AddPriPlanDTO;
 import cn.edu.lsu.demo.model.dto.ChangePriPlanDTO;
 import cn.edu.lsu.demo.model.dto.GetPriPlanDTO;
-import cn.edu.lsu.demo.model.dto.RegisterDTO;
+
 import cn.edu.lsu.demo.model.entity.PriPlan;
-import cn.edu.lsu.demo.model.entity.User;
-import cn.edu.lsu.demo.model.vo.UserVO;
+
 import cn.edu.lsu.demo.repository.PriPlanRepository;
 import cn.edu.lsu.demo.service.PriPlanService;
-import cn.graydove.security.annotation.CurrentUser;
-import cn.graydove.security.exception.UsernameNotFoundException;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import cn.edu.lsu.demo.model.vo.PriPlanVO;
@@ -20,6 +18,7 @@ import cn.edu.lsu.demo.model.vo.PriPlanVO;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PriPlanServiceImpl implements PriPlanService {
@@ -34,7 +33,7 @@ public class PriPlanServiceImpl implements PriPlanService {
 
     @Override
     public List<PriPlanVO> GetPriPlan (GetPriPlanDTO getPriPlanDTO){
-        List<PriPlan> pri=priPlanRepository.findAllByUserId(getPriPlanDTO.getUserId());
+        List<PriPlan> pri=priPlanRepository.findByUserId(getPriPlanDTO.getUserId());
         List<PriPlanVO> resultList= new ArrayList<>();
         BeanUtils.copyProperties(resultList,pri);
 
@@ -59,26 +58,27 @@ public class PriPlanServiceImpl implements PriPlanService {
     }
 
     @Override
-    public PriPlanVO ChangePriPlan(ChangePriPlanDTO changePriPlanDTO){
+    public PriPlanVO ChangePriPlan(ChangePriPlanDTO changePriPlanDTO,Integer userId){
 
-
-        PriPlan p = priPlanRepository.findPriPlanById(changePriPlanDTO.getId());
-
-        p.setSustain(changePriPlanDTO.getSustain());
-        p.setContent(changePriPlanDTO.getContent());
-        p=priPlanRepository.save(p);
 
         PriPlanVO pVO = new PriPlanVO();
-        BeanUtils.copyProperties(p, pVO);
-        return pVO;
+        priPlanRepository.findById(changePriPlanDTO.getId()).ifPresent((p -> {
+            if(Objects.equals(userId, p.getUserId())){
+                p.setSustain(changePriPlanDTO.getSustain());
+                p.setContent(changePriPlanDTO.getContent());
+                p=priPlanRepository.save(p);
 
+                BeanUtils.copyProperties(p, pVO);
+            }
+        }));
+        return pVO;
     }
 
 
     @Override
-    public PriPlanVO DelectPriPlan(Integer id){
+    public PriPlanVO DeletePriPlan(Integer id){
         PriPlan p = new PriPlan();
-        p=priPlanRepository.deleteByid(id);
+        priPlanRepository.deleteById(id);
         PriPlanVO pVO = new PriPlanVO();
         BeanUtils.copyProperties(p, pVO);
         return pVO;

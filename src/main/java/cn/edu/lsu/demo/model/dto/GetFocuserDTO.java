@@ -3,11 +3,12 @@ package cn.edu.lsu.demo.model.dto;
 
 import lombok.Data;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class GetFouserDTO {
+public class GetFocuserDTO {
 
 
-    private Number userId;
+    private Integer userId;
 }

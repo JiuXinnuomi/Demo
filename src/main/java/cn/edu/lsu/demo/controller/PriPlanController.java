@@ -4,11 +4,9 @@ package cn.edu.lsu.demo.controller;
 import cn.edu.lsu.demo.model.dto.AddPriPlanDTO;
 import cn.edu.lsu.demo.model.dto.ChangePriPlanDTO;
 import cn.edu.lsu.demo.model.dto.GetPriPlanDTO;
-import cn.edu.lsu.demo.model.dto.UserDTO;
-import cn.edu.lsu.demo.model.entity.PriPlan;
 import cn.edu.lsu.demo.model.entity.User;
 import cn.edu.lsu.demo.model.vo.PriPlanVO;
-import cn.edu.lsu.demo.model.vo.UserVO;
+
 import cn.edu.lsu.demo.model.vo.status.Response;
 import cn.edu.lsu.demo.model.vo.status.impl.*;
 import cn.edu.lsu.demo.service.PriPlanService;
@@ -18,8 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@RestController
 
+
+@RestController
 public class PriPlanController {
     private PriPlanService priPlanService;
 
@@ -50,9 +49,9 @@ public class PriPlanController {
 
 
     @PutMapping("/PriPlan")
-    public Response<PriPlanVO> ChangePriPlan(@Valid ChangePriPlanDTO changePriPlanDTO){
+    public Response<PriPlanVO> ChangePriPlan(@Valid ChangePriPlanDTO changePriPlanDTO,@CurrentUser User user){
         try {
-            PriPlanVO pvo=priPlanService.ChangePriPlan(changePriPlanDTO);
+            PriPlanVO pvo=priPlanService.ChangePriPlan(changePriPlanDTO,user.getId());
             return Response.success(pvo);
         } catch (RuntimeException e) {
             return Response.pack(ChangePriPlanWrong.class);
@@ -60,9 +59,9 @@ public class PriPlanController {
     }
 
     @DeleteMapping("/PriPlan")
-    public Response<PriPlanVO> DelectPriPlan(@Valid ChangePriPlanDTO changePriPlanDTO){
+    public Response<PriPlanVO> DeletePriPlan(@Valid ChangePriPlanDTO changePriPlanDTO){
         try{
-            PriPlanVO pvo=priPlanService.DelectPriPlan(changePriPlanDTO.getId());
+            PriPlanVO pvo=priPlanService.DeletePriPlan(changePriPlanDTO.getId());
             return Response.success(pvo);
         } catch (RuntimeException e) {
             return Response.pack(DelectPriPlanWrong.class);

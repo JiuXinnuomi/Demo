@@ -9,7 +9,10 @@ import javax.validation.constraints.NotBlank;
 public class GetPubPlanDTO {
 
 
-    private Number userId;
+    private Integer creatorId;
+
+
+
 
 
 }

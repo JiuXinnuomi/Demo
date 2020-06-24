@@ -21,10 +21,13 @@ public class PubPlan {
 
 
     @Column(length = 50, nullable = false)
-    private Integer title;
+    private String title;
 
 
-    private Integer createrId;
+    @Column(length = 50, nullable = false)
+    private Integer sustain;
+
+    private Integer creatorId;
 
 
 }

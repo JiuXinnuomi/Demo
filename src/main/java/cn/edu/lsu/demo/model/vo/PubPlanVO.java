@@ -11,6 +11,6 @@ public class PubPlanVO {
 
     private Integer title;
 
-    private Integer createrId;
+    private Integer creatorId;
 
 }

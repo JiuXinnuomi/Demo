@@ -14,10 +14,11 @@ public class Star {
     private Integer id;
 
     @Column(length = 50, nullable = false)
-    private String focuser;
+    private Integer focuserId;
+
 
     @Column(unique = true, nullable = false)
-    private String foucused;
+    private Integer focusedId;
 
 
 }
