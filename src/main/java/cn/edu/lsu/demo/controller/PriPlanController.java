@@ -32,7 +32,7 @@ public class PriPlanController {
 
             return Response.success(pvo);
         } catch (RuntimeException e) {
-            return Response.pack(PriPlanIsExist.class);
+            return Response.pack(IsExist.class);
         }
     }
 
@@ -42,7 +42,7 @@ public class PriPlanController {
             PriPlanVO pvo=priPlanService.AddPriPlan(addPriPlanDTO,user.getId());
             return Response.success(pvo);
         } catch (RuntimeException e) {
-            return Response.pack(AddPriPlanWrong.class);
+            return Response.pack(AddWrong.class);
         }
 
     }
@@ -54,7 +54,7 @@ public class PriPlanController {
             PriPlanVO pvo=priPlanService.ChangePriPlan(changePriPlanDTO,user.getId());
             return Response.success(pvo);
         } catch (RuntimeException e) {
-            return Response.pack(ChangePriPlanWrong.class);
+            return Response.pack(ChangeWrong.class);
         }
     }
 
@@ -64,7 +64,7 @@ public class PriPlanController {
             PriPlanVO pvo=priPlanService.DeletePriPlan(changePriPlanDTO.getId());
             return Response.success(pvo);
         } catch (RuntimeException e) {
-            return Response.pack(DelectPriPlanWrong.class);
+            return Response.pack(DeleteWrong.class);
         }
     }
 

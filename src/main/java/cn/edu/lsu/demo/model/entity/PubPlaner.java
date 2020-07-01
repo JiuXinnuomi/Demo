@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Participant {
+public class PubPlaner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

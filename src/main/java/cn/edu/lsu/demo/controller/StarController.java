@@ -3,14 +3,11 @@ package cn.edu.lsu.demo.controller;
 
 import cn.edu.lsu.demo.model.dto.*;
 import cn.edu.lsu.demo.model.entity.User;
-import cn.edu.lsu.demo.model.vo.PriPlanVO;
+
 import cn.edu.lsu.demo.model.vo.StarVO;
 import cn.edu.lsu.demo.model.vo.status.Response;
-import cn.edu.lsu.demo.model.vo.status.impl.AddPriPlanWrong;
-import cn.edu.lsu.demo.model.vo.status.impl.ChangePriPlanWrong;
-import cn.edu.lsu.demo.model.vo.status.impl.DelectPriPlanWrong;
-import cn.edu.lsu.demo.model.vo.status.impl.PriPlanIsExist;
-import cn.edu.lsu.demo.repository.StarRepository;
+import cn.edu.lsu.demo.model.vo.status.impl.*;
+
 import cn.edu.lsu.demo.service.StarService;
 import cn.graydove.security.annotation.CurrentUser;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +31,7 @@ public class StarController {
 
             return Response.success(svo);
         } catch (RuntimeException e) {
-            return Response.pack(PriPlanIsExist.class);
+            return Response.pack(IsExist.class);
         }
     }
 
@@ -46,7 +43,7 @@ public class StarController {
 
             return Response.success(svo);
         } catch (RuntimeException e) {
-            return Response.pack(PriPlanIsExist.class);
+            return Response.pack(IsExist.class);
         }
     }
 
@@ -58,7 +55,7 @@ public class StarController {
            StarVO svo=starService.AddStar(addStarDTO,user.getId());
             return Response.success(svo);
         } catch (RuntimeException e) {
-            return Response.pack(AddPriPlanWrong.class);
+            return Response.pack(AddWrong.class);
         }
 
     }
@@ -73,7 +70,7 @@ public class StarController {
 
             return Response.success(svo);
         } catch (RuntimeException e) {
-            return Response.pack(DelectPriPlanWrong.class);
+            return Response.pack(DeleteWrong.class);
         }
     }
 

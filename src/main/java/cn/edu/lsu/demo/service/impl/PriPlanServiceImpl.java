@@ -35,7 +35,7 @@ public class PriPlanServiceImpl implements PriPlanService {
     public List<PriPlanVO> GetPriPlan (GetPriPlanDTO getPriPlanDTO){
         List<PriPlan> pri=priPlanRepository.findByUserId(getPriPlanDTO.getUserId());
         List<PriPlanVO> resultList= new ArrayList<>();
-        BeanUtils.copyProperties(resultList,pri);
+        BeanUtils.copyProperties(pri,resultList);
 
         return resultList;
 

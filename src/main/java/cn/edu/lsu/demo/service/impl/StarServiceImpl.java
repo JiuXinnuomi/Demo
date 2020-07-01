@@ -30,7 +30,7 @@ public class StarServiceImpl implements StarService {
     public List<StarVO> GetFocuser (GetFocuserDTO getFocuserDTO){
         List<Star> star=starRepository.findAllByFocuserId(getFocuserDTO.getUserId());
         List<StarVO> resultList= new ArrayList<>();
-        BeanUtils.copyProperties(resultList,star);
+        BeanUtils.copyProperties(star,resultList);
 
         return resultList;
 
@@ -40,7 +40,7 @@ public class StarServiceImpl implements StarService {
         List<Star> star=starRepository.findAllByFocusedId(getFocusedDTO.getUserId());
         List<StarVO> resultList= new ArrayList<>();
 
-        BeanUtils.copyProperties(resultList,star);
+        BeanUtils.copyProperties(star,resultList);
 
         return resultList;
     }

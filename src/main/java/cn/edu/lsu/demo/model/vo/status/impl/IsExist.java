@@ -2,14 +2,14 @@ package cn.edu.lsu.demo.model.vo.status.impl;
 
 import cn.edu.lsu.demo.model.vo.status.Status;
 
-public class DelectPriPlanWrong  implements Status {
+public class IsExist implements Status {
     @Override
     public Integer getCode() {
-        return 104;
+        return 121;
     }
 
     @Override
     public String getIntroduce() {
-        return "删除个人计划失败";
+        return "未找到";
     }
 }

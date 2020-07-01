@@ -36,7 +36,7 @@ public class PubPlanServiceImpl implements PubPlanService {
     public List<PubPlanVO> GetPubPlan (GetPubPlanDTO getPubPlanDTO){
         List<PubPlan> pub=pubPlanRepository.findByCreatorId(getPubPlanDTO.getCreatorId());
         List<PubPlanVO> resultList= new ArrayList<>();
-        BeanUtils.copyProperties(resultList,pub);
+        BeanUtils.copyProperties(pub,resultList);
 
         return resultList;
 
